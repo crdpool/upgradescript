@@ -15,11 +15,11 @@ docker stop $(docker ps -aq) 2>/dev/null
 docker rm $(docker ps -aq) 2>/dev/null
 docker rmi -f $(docker images -aq) 2>/dev/null
 
-# Extract the input YAML file path from the docker-compose ls output
-INPUT_YAML=$(docker-compose ls | grep basic-sol-prediction-node5 | awk '{print $3}')
+# Укажите путь к входному YAML-файлу вручную
+INPUT_YAML="docker-compose.yml"
 
 # Define the output YAML file path
-OUTPUT_YAML=$(echo "$INPUT_YAML" | sed 's/[^/]*$/docker-compose-testnet.yml/')
+OUTPUT_YAML="docker-compose-testnet.yml"
 
 # Ensure the input file exists before proceeding
 if [ -f "$INPUT_YAML" ]; then
